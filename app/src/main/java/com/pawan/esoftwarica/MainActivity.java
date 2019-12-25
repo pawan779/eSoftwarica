@@ -8,11 +8,16 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.pawan.esoftwarica.RecycleView.Softwarica;
 import com.pawan.esoftwarica.fragments.AboutFragment;
 import com.pawan.esoftwarica.fragments.AddFragment;
 import com.pawan.esoftwarica.fragments.HomeFragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+    public static List<Softwarica> softwaricas=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
