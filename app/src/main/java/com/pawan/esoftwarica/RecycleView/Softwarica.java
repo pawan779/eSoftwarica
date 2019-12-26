@@ -8,7 +8,7 @@ public class Softwarica {
     private int imgProfileId;
     private int imgRemoveId;
 
-    public Softwarica(String name, int age, String address, String gender, int imgProfileId, int imgRemoveId) {
+    public Softwarica(String name, int age, String address, String gender) {
         this.name = name;
         this.age = age;
         this.address = address;

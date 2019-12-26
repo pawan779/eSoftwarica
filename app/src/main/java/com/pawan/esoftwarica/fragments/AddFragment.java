@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,15 +18,16 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.pawan.esoftwarica.MainActivity;
 import com.pawan.esoftwarica.Model.AddModel;
 import com.pawan.esoftwarica.R;
-
+import com.pawan.esoftwarica.RecycleView.Softwarica;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AddFragment extends Fragment implements View.OnClickListener,RadioGroup.OnCheckedChangeListener {
+public class AddFragment extends Fragment implements View.OnClickListener, RadioGroup.OnCheckedChangeListener {
     private EditText etName, etAge, etAddress;
     private RadioGroup rgGender;
     private Button btnSave;
@@ -43,8 +45,9 @@ public class AddFragment extends Fragment implements View.OnClickListener,RadioG
         etAddress = view.findViewById(R.id.etAddress);
         etAge = view.findViewById(R.id.etAge);
         btnSave = view.findViewById(R.id.btnSave);
+        rgGender=view.findViewById(R.id.rgGender);
+        rgGender.setOnCheckedChangeListener(this);
         btnSave.setOnClickListener(this);
-
         final TextView textView = view.findViewById(R.id.tvAdd);
         addModel.getText().observe(this, new Observer<String>() {
             @Override
@@ -55,33 +58,58 @@ public class AddFragment extends Fragment implements View.OnClickListener,RadioG
         return view;
     }
 
+    int age;
+    String name, address, gender;
+
     @Override
     public void onClick(View v) {
-        int age;
-        String name, address;
-        Toast.makeText(getActivity(), "Saved", Toast.LENGTH_SHORT).show();
-        name = etName.getText().toString();
-        age = Integer.parseInt(etAge.getText().toString());
-        address = etAddress.getText().toString();
+        if (v.getId() == R.id.btnSave) {
+            //Toast.makeText(getActivity(), "Saved", Toast.LENGTH_SHORT).show();
+            name = etName.getText().toString();
+            age = Integer.parseInt(etAge.getText().toString());
+            address = etAddress.getText().toString();
+
+            if (validate()) {
+                MainActivity.softwaricas.add(new Softwarica(name, age, address, gender));
+                Toast.makeText(getContext(), "Student Added", Toast.LENGTH_SHORT).show();
+            }
+
+        }
 
 
+    }
+
+    private boolean validate() {
+        if (TextUtils.isEmpty(etName.getText())) {
+            etName.setError("Enter full name");
+            etName.requestFocus();
+            return false;
+        } else if (TextUtils.isEmpty(etAge.getText())) {
+            etAge.setError("Enter age");
+            etAge.requestFocus();
+            return false;
+        } else if (TextUtils.isEmpty(etAddress.getText())) {
+            etAddress.setError("Enter Address");
+            etAddress.requestFocus();
+            return false;
+        } else if (TextUtils.isEmpty(gender)) {
+            Toast.makeText(getContext(), "Select gender", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-        String gender;
-        if (checkedId==R.id.rbMale)
-        {
-            gender="male";
+        if (checkedId == R.id.rbMale) {
+            gender = "male";
         }
-        if (checkedId==R.id.rbFemale)
-        {
-            gender="female";
+        if (checkedId == R.id.rbFemale) {
+            gender = "female";
         }
-        if (checkedId==R.id.rbOthers)
-        {
-            gender="Others";
+        if (checkedId == R.id.rbOthers) {
+            gender = "Others";
         }
 
     }

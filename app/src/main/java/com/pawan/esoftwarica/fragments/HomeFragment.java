@@ -57,19 +57,21 @@ public class HomeFragment extends Fragment {
         List<Softwarica> softwaricaList = new ArrayList<>();
 
         if (MainActivity.softwaricas.isEmpty()) {
-            MainActivity.softwaricas.add(new Softwarica("pawan", 20, "banasthali", "male", 1, 1));
+            MainActivity.softwaricas.add(new Softwarica("pawan", 20, "banasthali", "male"));
             SoftwaricaActivity softwaricaActivity = new SoftwaricaActivity(getContext(), MainActivity.softwaricas);
             recyclerView.setAdapter(softwaricaActivity);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        } else {
+        }
+
+        else {
 
 
             SoftwaricaActivity softwaricaActivity = new SoftwaricaActivity(getContext(), MainActivity.softwaricas);
             recyclerView.setAdapter(softwaricaActivity);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
 
         }
+
         return view;
     }
 
