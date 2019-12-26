@@ -51,6 +51,7 @@ public class SoftwaricaActivity extends RecyclerView.Adapter<SoftwaricaActivity.
             holder.imgProfile.setImageResource(R.drawable.others);
         }
 
+
         holder.imgProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

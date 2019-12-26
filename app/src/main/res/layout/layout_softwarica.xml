@@ -70,19 +70,22 @@
         android:layout_height="70dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.789"
+        app:layout_constraintHorizontal_bias="0.842"
         app:layout_constraintStart_toEndOf="@+id/tvname"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_delete_black_24dp"
         tools:ignore="VectorDrawableCompat" />
 
     <ImageView
-        android:id="@+id/imgEdit"
-        android:layout_width="67dp"
-        android:layout_height="71dp"
+        android:id="@+id/imgupdate"
+        android:layout_width="57dp"
+        android:layout_height="70dp"
         android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvgender"
         app:layout_constraintEnd_toStartOf="@+id/imgremove"
+        app:layout_constraintStart_toEndOf="@+id/tvname"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/edit" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
