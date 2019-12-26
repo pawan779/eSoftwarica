@@ -5,7 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:layout_marginBottom="20dp">
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -46,6 +48,8 @@
         android:id="@+id/tvage"
         android:layout_width="134dp"
         android:layout_height="29dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="20dp"
         android:text="Age"
         app:layout_constraintEnd_toStartOf="@+id/tvgender"
@@ -87,5 +91,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/edit" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 </ScrollView>

@@ -26,7 +26,7 @@ import com.pawan.esoftwarica.MainActivity;
 import com.pawan.esoftwarica.Model.HomeModel;
 import com.pawan.esoftwarica.R;
 import com.pawan.esoftwarica.RecycleView.Softwarica;
-import com.pawan.esoftwarica.RecycleView.SoftwaricaActivity;
+import com.pawan.esoftwarica.RecycleView.SoftwaricaAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,14 +58,23 @@ public class HomeFragment extends Fragment {
         List<Softwarica> softwaricaList = new ArrayList<>();
 
         if (MainActivity.softwaricas.isEmpty()) {
-            Toast.makeText(getContext(), "Empty", Toast.LENGTH_SHORT).show();
+
+
+                MainActivity.softwaricas.add(new Softwarica("Pawan Dharel", 20, "Banasthali","male"));
+            MainActivity.softwaricas.add(new Softwarica("Sandesh Phuyal", 20, "Balaju","male"));
+                SoftwaricaAdapter softwaricaAdapter=new SoftwaricaAdapter(getContext(),MainActivity.softwaricas);
+                recyclerView.setAdapter(softwaricaAdapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+
+
         }
 
         else {
 
 
-            SoftwaricaActivity softwaricaActivity = new SoftwaricaActivity(getContext(), MainActivity.softwaricas);
-            recyclerView.setAdapter(softwaricaActivity);
+            SoftwaricaAdapter softwaricaAdapter = new SoftwaricaAdapter(getContext(), MainActivity.softwaricas);
+            recyclerView.setAdapter(softwaricaAdapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         }

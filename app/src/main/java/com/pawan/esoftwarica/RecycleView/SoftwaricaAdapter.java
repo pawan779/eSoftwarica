@@ -15,31 +15,31 @@ import com.pawan.esoftwarica.R;
 
 import java.util.List;
 
-public class SoftwaricaActivity extends RecyclerView.Adapter<SoftwaricaActivity.SoftwaricaViewHolder> {
-
+public class SoftwaricaAdapter extends RecyclerView.Adapter<SoftwaricaAdapter.SoftwaricaViewHolder> {
     Context mContext;
     List<Softwarica> softwaricaList;
 
-    public SoftwaricaActivity(Context mContext, List<Softwarica> softwaricaList) {
+    public SoftwaricaAdapter(Context mContext, List<Softwarica> softwaricaList) {
         this.mContext = mContext;
         this.softwaricaList = softwaricaList;
     }
 
     @NonNull
     @Override
-    public SoftwaricaActivity.SoftwaricaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public SoftwaricaAdapter.SoftwaricaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_softwarica, parent, false);
         return new SoftwaricaViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SoftwaricaActivity.SoftwaricaViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final SoftwaricaAdapter.SoftwaricaViewHolder holder, final int position) {
         final Softwarica softwarica = softwaricaList.get(position);
         holder.tvName.setText(softwarica.getName());
         holder.tvAddress.setText(softwarica.getAddress());
         holder.tvGender.setText(softwarica.getGender());
 
         holder.tvAge.setText(softwarica.getAge()+"");
+
 
         holder.imgRemove.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_delete_black_24dp));
         String gender = softwarica.getGender();
@@ -59,6 +59,14 @@ public class SoftwaricaActivity extends RecyclerView.Adapter<SoftwaricaActivity.
             }
         });
 
+        holder.imgUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
+
         holder.imgRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,6 +79,8 @@ public class SoftwaricaActivity extends RecyclerView.Adapter<SoftwaricaActivity.
         });
     }
 
+
+
     @Override
     public int getItemCount() {
         return softwaricaList.size();
@@ -78,7 +88,7 @@ public class SoftwaricaActivity extends RecyclerView.Adapter<SoftwaricaActivity.
 
     public class SoftwaricaViewHolder extends RecyclerView.ViewHolder {
         TextView tvName, tvAddress, tvAge, tvGender;
-        ImageView imgProfile, imgRemove;
+        ImageView imgProfile, imgRemove,imgUpdate;
 
         public SoftwaricaViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -88,6 +98,7 @@ public class SoftwaricaActivity extends RecyclerView.Adapter<SoftwaricaActivity.
             tvGender = itemView.findViewById(R.id.tvgender);
             imgProfile = itemView.findViewById(R.id.imgprofile);
             imgRemove = itemView.findViewById(R.id.imgremove);
+            imgUpdate=itemView.findViewById(R.id.imgupdate);
 
         }
     }
