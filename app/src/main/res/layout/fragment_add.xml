@@ -92,7 +92,7 @@
         android:layout_height="wrap_content"
         android:text="SAVE"
         android:layout_marginTop="20dp"
-        android:background="#2B52F9"
+        android:background="@drawable/button_shape"
         android:textColor="#fff"
         />
 

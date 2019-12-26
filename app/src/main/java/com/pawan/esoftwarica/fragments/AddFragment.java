@@ -65,38 +65,44 @@ public class AddFragment extends Fragment implements View.OnClickListener, Radio
     public void onClick(View v) {
         if (v.getId() == R.id.btnSave) {
             //Toast.makeText(getActivity(), "Saved", Toast.LENGTH_SHORT).show();
+
+
+            if (TextUtils.isEmpty(etName.getText())) {
+                etName.setError("Enter full name");
+                etName.requestFocus();
+                return;
+            } else if (TextUtils.isEmpty(etAge.getText())) {
+                etAge.setError("Enter age");
+                etAge.requestFocus();
+                return;
+            }
+                else if (TextUtils.isEmpty(gender)) {
+                    Toast.makeText(getContext(), "Select gender", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+            else if (TextUtils.isEmpty(etAddress.getText())) {
+                etAddress.setError("Enter Address");
+                etAddress.requestFocus();
+                return;
+
+            }
+
             name = etName.getText().toString();
             age = Integer.parseInt(etAge.getText().toString());
             address = etAddress.getText().toString();
 
-            if (validate()) {
+
+
+
+
                 MainActivity.softwaricas.add(new Softwarica(name, age, address, gender));
                 Toast.makeText(getContext(), "Student Added", Toast.LENGTH_SHORT).show();
-            }
+
 
         }
 
 
-    }
-
-    private boolean validate() {
-        if (TextUtils.isEmpty(etName.getText())) {
-            etName.setError("Enter full name");
-            etName.requestFocus();
-            return false;
-        } else if (TextUtils.isEmpty(etAge.getText())) {
-            etAge.setError("Enter age");
-            etAge.requestFocus();
-            return false;
-        } else if (TextUtils.isEmpty(etAddress.getText())) {
-            etAddress.setError("Enter Address");
-            etAddress.requestFocus();
-            return false;
-        } else if (TextUtils.isEmpty(gender)) {
-            Toast.makeText(getContext(), "Select gender", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        return true;
     }
 
 

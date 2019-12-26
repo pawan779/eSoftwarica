@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.pawan.esoftwarica.R;
 import com.pawan.esoftwarica.UpdateActivity;
-import com.pawan.esoftwarica.fragments.EditFragment;
 
 import java.util.List;
 
@@ -66,7 +64,11 @@ public class SoftwaricaAdapter extends RecyclerView.Adapter<SoftwaricaAdapter.So
         holder.imgUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Softwarica softwarica1=softwaricaList.get(position);
+                int index=softwaricaList.indexOf(softwarica1);
+                UpdateActivity.index=index;
+                Intent intent=new Intent(mContext, UpdateActivity.class);
+                mContext.startActivity(intent);
 
             }
         });
@@ -81,6 +83,7 @@ public class SoftwaricaAdapter extends RecyclerView.Adapter<SoftwaricaAdapter.So
                 Toast.makeText(mContext, "Removed " + softwarica1.getName(), Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
 
